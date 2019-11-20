@@ -1,13 +1,13 @@
 import cv2
 import os
 
-vod = cv2.VideoCapture('samples/test_footage.mp4') 
+vod = cv2.VideoCapture('data/video/test_footage.mp4') 
 fps = 60
 
 framecount = 0
 
-st_template = cv2.imread('samples/st.png', cv2.COLOR_BGR2GRAY)
-ge_template = cv2.imread('samples/ge.png', cv2.COLOR_BGR2GRAY)
+st_template = cv2.imread('data/templates/st.png', cv2.COLOR_BGR2GRAY)
+ge_template = cv2.imread('data/templates/ge.png', cv2.COLOR_BGR2GRAY)
 
 #game_end_template = cv2.imread('samples/game_end.png')
 
@@ -48,7 +48,7 @@ while True:
         print(framecount)
         last = framecount
         time = int(framecount / 60)
-        cv2.imwrite('samples/' + str(time) + '.png', frame)
+        cv2.imwrite('data/output/' + str(time) + '.png', frame)
 
     #if framecount == 10550:
 
