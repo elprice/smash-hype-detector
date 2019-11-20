@@ -1,7 +1,10 @@
 import cv2
 import os
 
-vod = cv2.VideoCapture('data/video/test_footage.mp4') 
+vod_filename = 'ms33.mp4'
+img_prefix = 'ms33'
+
+vod = cv2.VideoCapture('data/video/' + vod_filename) 
 fps = 60
 
 framecount = 0
@@ -29,7 +32,7 @@ while True:
         break
 
     framecount += 1
-    if framecount % 100 == 0:
+    if framecount % 1000 == 0:
         print(framecount)
     
     
@@ -44,11 +47,11 @@ while True:
     ge_res = cv2.matchTemplate(roi,ge_template,cv2.TM_CCOEFF)
     _, ge_max, _, _ = cv2.minMaxLoc(ge_res)
 
-    if (st_max > 20024226 or ge_max > 18273518) and framecount > last+wait:
+    if (st_max > 20024226 or ge_max > 16273518) and framecount > last+wait:
         print(framecount)
         last = framecount
         time = int(framecount / 60)
-        cv2.imwrite('data/output/' + str(time) + '.png', frame)
+        cv2.imwrite('data/output/' + img_prefix + '_' + str(time) + '.png', frame)
 
     #if framecount == 10550:
 
